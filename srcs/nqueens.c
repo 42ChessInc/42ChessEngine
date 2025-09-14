@@ -1,13 +1,80 @@
-#include "../include/board.h"
-#include <stdio.h>
+#include "board.h"
 
-static
-void	print_board(int	*board_state, int size);
+int		isvalid(int *queens, int n, int i);
+void	print_result(int *queens, int size);
+void	algorithm(int *queens, int size, int nth_queen, int *flag);
 
 int	main(int argc, char **argv)
 {
-	t_state	this;
+	int	*queens;
+	int	size;
+	int	found_solution;
+
+	if (argc != 2)
+		return (-1);
+	found_solution = 0;
+	size = atoi(argv[1]);
+	queens = (int *)malloc(size * sizeof(int));
+	memset(queens, -1, size * sizeof(int));
+	algorithm(queens, size, 0, &found_solution);
+	if (!found_solution)
+		printf("No solution...\n");
+	free(queens);
+	return (0);
+}
+
+void	algorithm(int *queens, int size, int nth_queen, int *flag)
+{
+	int	col;
+
+	if (nth_queen == size)
+	{
+		print_result(queens, size);
+		*flag = 1;
+		return ;
+	}
+	col = 0;
+	while (col < size)
+	{
+		if (isvalid(queens, nth_queen, col))
+		{
+			queens[nth_queen] = col;
+			algorithm(queens, size, nth_queen + 1, flag);
+		}
+		col++;
+	}
+}
+
+int	isvalid(int *queens, int row, int col)
+{
 	int	i;
+
+	i = 0;
+	while (i < row)
+	{
+		if (queens[i] == col || abs(row - i) == abs(col - queens[i]))
+			return (0);
+		i++;
+	}
+	return (1);
+}
+
+void	print_result(int *queens, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < size)
+	{
+		printf("%d ", queens[i]);
+		i++;
+	}
+	printf("\n");
+}
+/*
+int	main(int argc, char **argv)
+{
+	t_state	*this;
 	//int	solution4[4] = {2, 0, 3, 1};
 	//int	solution5[5] = {0, 2, 4, 1, 3};
 	//int	solution6[6] = {1, 3, 5, 0, 2, 4};
@@ -16,77 +83,12 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		return (-1);
-	init_state(argc, argv);
-	/*
+	init_state(argv, &this);
 	At start:
-	column index -> -1	-1	-1	-1
-	row index    ->  0	 1	 2	 3
-	*/
-	i = -1;
-	while (++i < problem_size)
-		board_state[i] = -1;
+	row index    -> -1	-1	-1	-1
+	column index ->  0	 1	 2	 3
 	//print_board(board_state, problem_size);
-	//print_board(solution4, 4);
-	//print_board(solution5, 5);
-	//print_board(solution6, 6);
-	//print_board(solution7, 7);
-	//print_board(solution8, 8);
-	free(board_state);
+	print_board(this->board, this->size);
+	cleanup(&this);
 }
-
-static
-void	print_board(int	*board_state, int size)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < size)
-	{
-		j = 0;
-		printf("\n");
-		while (j < size)
-		{
-			if (i == board_state[j]) 
-				printf(" \u2655 ");
-			else
-				printf(" * ");
-			j++;
-		}
-		i++;
-	}
-	printf("\n");
-	printf("\n");
-}
-
-static
-int	init_state(char **argv, t_state **state)
-{
-	int	size;
-	int	i;
-
-	*state = (t_state *)calloc(1, sizeof(t_state));
-	if (!*state)
-		return (-1);
-	size = atoi(argv[1]);
-	(*state)->board = (int *)calloc(size, sizeof(int));
-	if (!(*state)->board)
-		return (-1);
-	i = 0;
-	while (i < size)
-	{
-		(*state)->board[i] = -1;
-		i++;
-	}
-	(*state)->next = NULL;
-}
-
-
-
-
-
-
-
-
-
-
+*/
