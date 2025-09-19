@@ -25,7 +25,7 @@ int	main(int argc, char **argv)
 
 void	algorithm(int *queens, int size, int nth_queen, int *flag)
 {
-	int	col;
+	int	row;
 
 	if (nth_queen == size)
 	{
@@ -33,26 +33,26 @@ void	algorithm(int *queens, int size, int nth_queen, int *flag)
 		*flag = 1;
 		return ;
 	}
-	col = 0;
-	while (col < size)
+	row = 0;
+	while (row < size)
 	{
-		if (isvalid(queens, nth_queen, col))
+		if (isvalid(queens, nth_queen, row))
 		{
-			queens[nth_queen] = col;
+			queens[nth_queen] = row;
 			algorithm(queens, size, nth_queen + 1, flag);
 		}
-		col++;
+		row++;
 	}
 }
 
-int	isvalid(int *queens, int row, int col)
+int	isvalid(int *queens, int col, int row)
 {
 	int	i;
 
 	i = 0;
-	while (i < row)
+	while (i < col)
 	{
-		if (queens[i] == col || abs(row - i) == abs(col - queens[i]))
+		if (queens[i] == row || abs(col - i) == abs(row - queens[i]))
 			return (0);
 		i++;
 	}

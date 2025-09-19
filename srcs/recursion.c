@@ -34,8 +34,8 @@ int main(int argc, char **argv)
 	set = NULL;
 	if (init(&set, target) < 0)
 		return (-1);
-//	result = fib(target);
-//	printf("\nResult %d\n", result);
+	//result = fib(target);
+	//printf("\nResult %d\n", result);
 	// Recursive fibonacci sequence (improved searched states)
 	result = ofib(set->explored, target);
 	printf("\nResult %d\n", result);
@@ -62,10 +62,10 @@ int	fib(int n)
 {
 	if (n == 1 || n == 2)
 	{
-		//printf("f(%d) = 1 f(%d) = 1\n", 1, 2);
+		printf("f(%d) = 1 f(%d) = 1\n", 1, 2);
 		return (1);
 	}
-	//printf("f(%d) need f(%d), f(%d)\n", n, n - 1, n - 2);
+	printf("f(%d) need f(%d), f(%d)\n", n, n - 1, n - 2);
 	return (fib(n - 1) + fib(n - 2));
 }
 
@@ -74,9 +74,13 @@ int	ofib(int *explored, int n)
 	if (n <= 0)
 		return (0);
 	if (isexplored(explored, n))
+	{
+		printf("f(%d) = 1 f(%d) = 1\n", 1, 2);
 		return (explored[n - 1]);
+	}
 	explored[n - 2] = ofib(explored, n - 1); 
 	explored[n - 3] = ofib(explored, n - 2);
+	printf("f(%d) need f(%d), f(%d)\n", n, n - 1, n - 2);
 	return (explored[n - 2] + explored[n - 3]);
 }
 
