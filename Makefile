@@ -2,12 +2,13 @@ NAME= autoMate
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra -Iinclude
+CFLAGS = -Wall -Werror -Wextra -Iinclude -g
 
 SRCS_DIR = srcs
 OBJS_DIR = objs
 
-SRC = ft_strtok.c
+MAIN = srcs/main.c
+SRC = ft_strtok.c helpers.c
 OBJ = $(SRC:.c=.o)
 
 OBJ_PATH = $(patsubst %,$(OBJS_DIR)/%,$(OBJ))
@@ -15,7 +16,7 @@ OBJ_PATH = $(patsubst %,$(OBJS_DIR)/%,$(OBJ))
 all: $(NAME)
 
 $(NAME): $(OBJ_PATH)
-	$(CC) $(CFLAGS) $^ -o $(NAME)
+	$(CC) $(CFLAGS) $(MAIN) $^ -o $(NAME)
 	@echo "Compiled program."
 
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c
