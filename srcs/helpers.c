@@ -13,7 +13,7 @@ void	ft_clean_board(t_board *b)
 	memset(b->board, 0, 64 * sizeof(int));
 }
 
-void	board_set_piece(t_board *b, int sq, int piece)
+void	board_set_piece(t_board *b, int sq, t_piece piece)
 {
 	Bitboard	sq_mask;
 
@@ -41,6 +41,7 @@ void	board_set_piece(t_board *b, int sq, int piece)
 			case W_ROOK: case B_ROOK: b->rooks |= sq_mask; break ;
 			case W_QUEEN: case B_QUEEN: b->queens |= sq_mask; break ;
 			case W_KING: case B_KING: b->kings |= sq_mask; break ;
+			default : break ;
 		}
 		b->board[sq] = piece;
 	}

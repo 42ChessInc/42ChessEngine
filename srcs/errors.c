@@ -6,7 +6,7 @@ void	ft_err_handle(const char *str)
 	exit(1);
 }
 
-size_t	ft_count_args(char *fen_str, const char *sep)
+size_t	ft_count_args(const char *fen_str, const char *sep)
 {
     char	*fen_copy;
     char	*tmp_token;

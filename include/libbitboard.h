@@ -80,24 +80,26 @@
 # define SQ_G8 62
 # define SQ_H8 63
 
-// Piece constants
-# define EMPTY       0
-# define W_PAWN      1
-# define W_KNIGHT    2
-# define W_BISHOP    3
-# define W_ROOK      4
-# define W_QUEEN     5
-# define W_KING      6
-# define B_PAWN      7
-# define B_KNIGHT    8
-# define B_BISHOP    9
-# define B_ROOK     10
-# define B_QUEEN    11
-# define B_KING     12
-
 // Helper: get square from file (0=a,7=h) and rank (0=1st,7=8th)
 # define SQ(file, rank) ((rank)*8 + (file))
 typedef unsigned long long Bitboard;
+
+typedef enum s_piece
+{
+    EMPTY,
+    W_PAWN,
+    W_KNIGHT,
+    W_BISHOP,
+    W_ROOK,
+    W_QUEEN,
+    W_KING,
+    B_PAWN,
+    B_KNIGHT,
+    B_BISHOP,
+    B_ROOK,
+    B_QUEEN,
+    B_KING
+}	t_piece;
 
 typedef struct s_board
 {
@@ -109,17 +111,20 @@ typedef struct s_board
 	Bitboard	rooks;
 	Bitboard	queens;
 	Bitboard	kings;
-	int			board[64];
+	t_piece		board[64];
 }	t_board;
 
 /*********************** PARSER FUNCTIONS ***************************/
 char	*ft_strtok(char *str, const char *delim);
-void    ft_err_handle(const char *str);
-char	**ft_fen2arr(char *fen_str, const char *sep);
+size_t	ft_count_args(const char *fen_str, const char *sep);
+char	**ft_fen2arr(const char *fen_str, const char *sep);
+int	fen_to_board(const char *fen_str, t_board *b);
 
 /********************** UTILITY FUNCTIONS ***************************/
-void	board_set_piece(t_board *b, int sq, int piece);
+void	board_set_piece(t_board *b, int sq, t_piece piece);
 void	ft_clean_board(t_board *b);
+t_piece	lookup_fen2piece(char c);
+char	lookup_piece2fen(t_piece piece_type);
 
 /*********************** TEST FUNCTIONS *****************************/
 void	test_board_set_piece(void);
@@ -127,7 +132,7 @@ void	test_ft_clean_board_and_board_set_piece(void);
 void	test_parser(void);
 
 /********************** CLEANUP FUNCTIONS ***************************/
-size_t	ft_count_args(char *fen_str, const char *sep);
+void    ft_err_handle(const char *str);
 void	cleanup(char **args, char *fen_copy);
 void	free_args(char **args);
 
