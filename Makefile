@@ -18,6 +18,8 @@ OBJ_PATH = $(patsubst %,$(OBJS_DIR)/%,$(OBJ))
 
 all: $(NAME)
 
+unit: fclean $(UNIT)
+
 $(NAME): $(OBJ_PATH)
 	$(CC) $(CFLAGS) $(MAIN) $^ -o $(NAME)
 	@echo "Compiled program."
@@ -42,3 +44,5 @@ fclean: clean
 	@echo "Finished full clean."
 
 re: fclean all
+
+.PHONY: all unit clean fclean re

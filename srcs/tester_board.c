@@ -4,7 +4,7 @@ int	main(int argc, char **argv)
 {
     if (argc != 2)
     {
-	printf("Wrong number of arguments.");
+	printf("Wrong number of arguments.\n");
 	exit(1);
     }
     if (!strcmp(argv[1], "--board"))
@@ -18,8 +18,8 @@ int	main(int argc, char **argv)
     {
 	printf("No known flag.\n \
 		 Usage: ./unit_test [--option]\n \
-		 --board\tRun test for board state \
-		 --parser\tRun test for FEN parser");
+		 --board\tRun test for board state\n \
+		 --parser\tRun test for FEN parser\n");
 	exit(1);
     }
     return (0);
