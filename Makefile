@@ -29,11 +29,11 @@ $(UNIT): $(OBJ_PATH)
 $(OBJS_DIR)/%.o: $(SRCS_DIR)/%.c | $(OBJS_DIR)
 	$(CC) $(CFLAGS) -c $< -o $@
 
-$(OBJ_DIR):
+$(OBJS_DIR):
 	mkdir -p $@
 
 clean:
-	@rm -f $(OBJ_PATH)
+	@rm -rf $(OBJS_DIR)
 	@echo "Cleaned objects..."
 
 fclean: clean
