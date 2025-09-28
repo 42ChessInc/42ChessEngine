@@ -17,21 +17,5 @@ int	main(int argc, char **argv)
 		printf("token: %s\n", token);
 		token = ft_strtok(NULL, "/");
 	}
-	test_board_set_piece();
-	test_ft_clean_board_and_board_set_piece();
 	return (0);
-}
-
-void	ft_err_handle(const char *str)
-{
-	fprintf(stderr, "%s", str);
-	exit(1);
-}
-
-void	ft_cleanup(char **fen_copy, char **delimiter)
-{
-	if (*fen_copy)
-		free(*fen_copy);
-	if (*delimiter)
-		free(*delimiter);
 }

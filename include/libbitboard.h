@@ -112,12 +112,23 @@ typedef struct s_board
 	int			board[64];
 }	t_board;
 
+/*********************** PARSER FUNCTIONS ***************************/
 char	*ft_strtok(char *str, const char *delim);
 void    ft_err_handle(const char *str);
-void	ft_cleanup(char **fen_copy, char **delimiter);
-void	ft_clean_board(t_board *b);
+char	**ft_fen2arr(char *fen_str, const char *sep);
+
+/********************** UTILITY FUNCTIONS ***************************/
 void	board_set_piece(t_board *b, int sq, int piece);
+void	ft_clean_board(t_board *b);
+
+/*********************** TEST FUNCTIONS *****************************/
 void	test_board_set_piece(void);
-void	test_ft_clean_board_and_board_set_piece();
+void	test_ft_clean_board_and_board_set_piece(void);
+void	test_parser(void);
+
+/********************** CLEANUP FUNCTIONS ***************************/
+size_t	ft_count_args(char *fen_str, const char *sep);
+void	cleanup(char **args, char *fen_copy);
+void	free_args(char **args);
 
 #endif
