@@ -132,22 +132,20 @@ int	fen_to_board(const char *fen_str, t_board *b)
 
 t_piece	lookup_fen2piece(char c)
 {
-    t_piece	piece_type;
-
     switch (c)
     {
-	case 'P' : piece_type = W_PAWN; return (piece_type) ;
-	case 'N' : piece_type = W_KNIGHT; return (piece_type) ;
-	case 'B' : piece_type = W_BISHOP; return (piece_type) ;
-	case 'R' : piece_type = W_ROOK; return (piece_type) ;
-	case 'Q' : piece_type = W_QUEEN; return (piece_type) ;
-	case 'K' : piece_type = W_KING; return (piece_type) ;
-	case 'p' : piece_type = B_PAWN; return (piece_type) ;
-	case 'n' : piece_type = B_KNIGHT; return (piece_type) ;
-	case 'b' : piece_type = B_BISHOP; return (piece_type) ;
-	case 'r' : piece_type = B_ROOK; return (piece_type) ;
-	case 'q' : piece_type = B_QUEEN; return (piece_type) ;
-	case 'k' : piece_type = B_KING; return (piece_type) ;
+	case 'P' : return (W_PAWN) ;
+	case 'N' : return (W_KNIGHT) ;
+	case 'B' : return (W_BISHOP) ;
+	case 'R' : return (W_ROOK) ;
+	case 'Q' : return (W_QUEEN) ;
+	case 'K' : return (W_KING) ;
+	case 'p' : return (B_PAWN) ;
+	case 'n' : return (B_KNIGHT) ;
+	case 'b' : return (B_BISHOP) ;
+	case 'r' : return (B_ROOK) ;
+	case 'q' : return (B_QUEEN) ;
+	case 'k' : return (B_KING) ;
 	default : return (EMPTY) ;
     }
 }
@@ -159,18 +157,18 @@ char	lookup_piece2fen(t_piece piece_type)
     c = '\0';
     switch (piece_type)
     {
-	case W_PAWN : c = 'P'; return (c) ;
-	case W_KNIGHT : c = 'N'; return (c) ;
-	case W_BISHOP : c = 'B'; return (c) ;
-	case W_ROOK : c = 'R'; return (c) ;
-	case W_QUEEN : c = 'Q'; return (c) ;
-	case W_KING : c = 'K'; return (c) ;
-	case B_PAWN : c = 'p'; return (c) ;
-	case B_KNIGHT : c = 'n'; return (c) ;
-	case B_BISHOP : c = 'b'; return (c) ;
-	case B_ROOK : c = 'r'; return (c) ;
-	case B_QUEEN : c = 'q'; return (c) ;
-	case B_KING : c = 'k'; return (c) ;
-	default : return (c) ;
+	case W_PAWN : return ('P');
+	case W_KNIGHT : return ('N');
+	case W_BISHOP : return ('B');
+	case W_ROOK : return ('R');
+	case W_QUEEN : return ('Q');
+	case W_KING : return ('K');
+	case B_PAWN : return ('p');
+	case B_KNIGHT : return ('n');
+	case B_BISHOP : return ('b');
+	case B_ROOK : return ('r');
+	case B_QUEEN : return ('q');
+	case B_KING : return ('k');
+	default : return (NULL) ;
     }
 }
