@@ -169,6 +169,6 @@ char	lookup_piece2fen(t_piece piece_type)
 	case B_ROOK : return ('r');
 	case B_QUEEN : return ('q');
 	case B_KING : return ('k');
-	default : return (NULL) ;
+	default : return (c);
     }
 }
