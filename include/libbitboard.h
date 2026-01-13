@@ -144,28 +144,35 @@ extern const Bitboard RANK_PROMOTION_W;
 extern const Bitboard RANK_PROMOTION_B;
 
 Bitboard knight_attacks[64];
+
 /*********************** PARSER FUNCTIONS ***************************/
+
 char	*ft_strtok(char *str, const char *delim);
 size_t	ft_count_args(const char *fen_str, const char *sep);
 char	**ft_fen2arr(const char *fen_str, const char *sep);
 int	fen_to_board(const char *fen_str, t_board *b);
 
 /********************** UTILITY FUNCTIONS ***************************/
+
 void	board_set_piece(t_board *b, int sq, t_piece piece);
 void	ft_clean_board(t_board *b);
 t_piece	lookup_fen2piece(char c);
 char	lookup_piece2fen(t_piece piece_type);
 
 /********************** PIECE FUNCTIONS ***************************/
+
 void	init_knight_attacks(void);
 void	generate_knight_moves(t_board *b, t_move move_list[], int *move_count);
 
+
 /*********************** TEST FUNCTIONS *****************************/
+
 void	test_board_set_piece(void);
 void	test_ft_clean_board_and_board_set_piece(void);
 void	test_parser(void);
 
 /********************** CLEANUP FUNCTIONS ***************************/
+
 void    ft_err_handle(const char *str);
 void	cleanup(char **args, char *fen_copy);
 void	free_args(char **args);

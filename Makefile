@@ -1,4 +1,4 @@
-NAME= autoMate
+NAME= aleph
 
 UNIT = unit_test
 
@@ -11,7 +11,15 @@ OBJS_DIR = objs
 
 MAIN = srcs/main.c
 TESTER = srcs/tester_board.c
-SRC = ft_strtok.c helpers.c errors.c parser.c
+SRC = ft_strtok.c \
+	  helpers.c \
+	  errors.c \
+	  parser.c \
+	  constants.c \
+	  knights.c \
+	  bishops.c \
+	  rook.c
+
 OBJ = $(SRC:.c=.o)
 
 OBJ_PATH = $(patsubst %,$(OBJS_DIR)/%,$(OBJ))

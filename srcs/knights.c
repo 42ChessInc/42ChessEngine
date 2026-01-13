@@ -25,15 +25,15 @@ void generate_knight_moves(t_board *b, t_move move_list[], int *move_count)
     int from_sq, to_sq;
     if (b->state.active_color == 0) // White's turn
     {
-	my_knights = b->knights & b->white_pieces;
-    	my_pieces = b->white_pieces;
-    	enemy_pieces = b->black_pieces;
+	my_knights = b->knights & b->white;
+    	my_pieces = b->white;
+    	enemy_pieces = b->black;
     }
     else // Black's turn
     {
-        my_knights = b->knights & b->black_pieces;
-        my_pieces = b->black_pieces;
-        enemy_pieces = b->white_pieces;
+        my_knights = b->knights & b->black;
+        my_pieces = b->black;
+        enemy_pieces = b->white;
     }
     while (my_knights)
     {
