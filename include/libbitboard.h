@@ -150,7 +150,7 @@ Bitboard knight_attacks[64];
 char	*ft_strtok(char *str, const char *delim);
 size_t	ft_count_args(const char *fen_str, const char *sep);
 char	**ft_fen2arr(const char *fen_str, const char *sep);
-int	fen_to_board(const char *fen_str, t_board *b);
+int		fen_to_board(const char *fen_str, t_board *b);
 
 /********************** UTILITY FUNCTIONS ***************************/
 
@@ -158,6 +158,7 @@ void	board_set_piece(t_board *b, int sq, t_piece piece);
 void	ft_clean_board(t_board *b);
 t_piece	lookup_fen2piece(char c);
 char	lookup_piece2fen(t_piece piece_type);
+int		get_lsb_index(Bitboard b);
 
 /********************** PIECE FUNCTIONS ***************************/
 
