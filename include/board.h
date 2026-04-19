@@ -32,7 +32,7 @@ typedef uint16_t move_t;
 typedef struct movelist_s
 {
 	move_t		moves[MAX_MOVES];
-	uint64_t	count;
+	uint8_t		count;
 }	movelist_t;
 
 typedef struct board_s
@@ -42,6 +42,7 @@ typedef struct board_s
 
 	uint64_t	hash;
 	uint32_t	fm_num;
+	uint8_t		en_passant;
 	uint8_t		turn;
 	uint8_t		castling_rights;
 	uint8_t		hm_clock;
